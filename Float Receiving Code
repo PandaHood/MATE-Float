@@ -1,0 +1,21 @@
+#include <SoftwareSerial.h>
+
+
+//DO not use D in the name of the variable 
+SoftwareSerial loraSerial(16,17);
+
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  loraSerial.begin(9600);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  if (loraSerial.available()>0)
+  {
+    String input = loraSerial.readString();
+    Serial.println(input);
+  }
+}
